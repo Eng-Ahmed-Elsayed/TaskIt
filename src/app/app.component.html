@@ -1,0 +1,13 @@
+<app-header></app-header>
+<main>
+  <ul id="users">
+    <li>
+      <app-user
+        *ngFor="let user of users"
+        [user]="user"
+        (selectUser)="onSelectUser($event)"
+      ></app-user>
+    </li>
+  </ul>
+</main>
+<app-tasks [currentUser]="currentUser"></app-tasks>
