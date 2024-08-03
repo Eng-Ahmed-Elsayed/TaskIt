@@ -10,6 +10,7 @@ import { User } from '../shared/user';
 })
 export class UserComponent {
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
   @Output() selectUser = new EventEmitter<string>();
 
   onSelectUser() {

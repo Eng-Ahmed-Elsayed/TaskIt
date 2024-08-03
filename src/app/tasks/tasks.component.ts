@@ -4,6 +4,7 @@ import {
   input,
   Input,
   OnInit,
+  signal,
   Signal,
 } from '@angular/core';
 import { Task } from '../shared/task';
@@ -19,9 +20,12 @@ import { TaskComponent } from '../task/task.component';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  // @Input({ required: true }) currentUser!: User;
-  currentUser = input.required<User>();
-  tasks: Signal<Task[]> = computed(() =>
-    DummyTasks.filter((x) => x.userId == this.currentUser().id)
-  );
+  @Input({ required: true }) currentUser!: User;
+  private tasks: Task[] = DummyTasks;
+  get currentUserTask() {
+    return this.tasks.filter((x) => x.userId == this.currentUser.id);
+  }
+  completedTask(taskId: string) {
+    this.tasks = this.tasks.filter((x) => x.id != taskId);
+  }
 }

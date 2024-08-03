@@ -5,9 +5,10 @@
       <app-user
         *ngFor="let user of users"
         [user]="user"
+        [selected]="currentUser.id == user.id"
         (selectUser)="onSelectUser($event)"
       ></app-user>
     </li>
   </ul>
+  <app-tasks [currentUser]="currentUser"></app-tasks>
 </main>
-<app-tasks [currentUser]="currentUser"></app-tasks>
