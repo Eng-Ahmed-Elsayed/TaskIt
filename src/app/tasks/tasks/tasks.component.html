@@ -2,7 +2,7 @@
   <header>
     <h2>{{ currentUser.name }}'s Tasks</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="openTaskFormModal()">Add Task</button>
     </menu>
   </header>
   <ul>
@@ -11,3 +11,6 @@
     }
   </ul>
 </section>
+@if(getIsNewTask) {
+<app-add-task (cancelNewTaskEmitter)="cancelNewTask()"></app-add-task>
+}
