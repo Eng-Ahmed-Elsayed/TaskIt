@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../shared/task';
+import { Task } from '../../shared/models/task.model';
+import { TaskService } from '../../shared/services/task.service';
 
 @Component({
   selector: 'app-task',
@@ -10,9 +11,10 @@ import { Task } from '../shared/task';
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
-  @Output() completedTask = new EventEmitter<string>();
+
+  constructor(private taskService: TaskService) {}
 
   onCompleteTask() {
-    this.completedTask.emit(this.task.id);
+    this.taskService.completedTask(this.task.id);
   }
 }
