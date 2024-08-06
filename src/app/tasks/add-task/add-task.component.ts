@@ -21,7 +21,6 @@ export class AddTaskComponent {
   constructor(private taskService: TaskService) {}
 
   createTask() {
-    console.log(this.newTaskForm);
     this.taskService.createTask(this.newTaskForm);
     this.onCancel();
   }
